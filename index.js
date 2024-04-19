@@ -5,8 +5,13 @@ app.use(express.json());
 const cors = require("cors");
 const { connection } = require("./Backend/config/db");
 const { userRouter } = require("./Backend/routes/users.route");
+const { todosRouter } = require("./Backend/routes/todos.route");
+
 const port = Number(process.env.PORT) || 8080;
+
 app.use("/users", userRouter);
+app.use("/todos", todosRouter);
+
 app.get("/", (req,res)=>{
     res.send("Home");
 })
