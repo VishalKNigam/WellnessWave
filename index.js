@@ -4,7 +4,9 @@ require("dotenv").config();
 app.use(express.json());
 const cors = require("cors");
 const { connection } = require("./Backend/config/db");
+const { userRouter } = require("./Backend/routes/users.route");
 const port = Number(process.env.PORT) || 8080;
+app.use("/users", userRouter);
 app.get("/", (req,res)=>{
     res.send("Home");
 })
@@ -17,5 +19,5 @@ app.listen(port, async()=>{
         console.log("Failed to connect DB");
         
     }
-    console.log(`Server is running at PORT http://localhost:${port}`);
+    console.log(`Server is running at http://localhost:${port}`);
 })
