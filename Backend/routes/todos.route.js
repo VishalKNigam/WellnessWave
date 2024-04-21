@@ -27,6 +27,51 @@ todosRouter.post("/add", async(req,res) => {
  }
 });
 
+// Todos Update Routes
+todosRouter.patch("/update/:id", async (req, res) => {
+  const {id} = req.params;
+  await TodoModel.findByIdAndUpdate({_id:id},req.body);
+  res.send({msg:"Todo Updated Sucessfully."})
+});
+
+// todos Delete Route
+todosRouter.delete("/delete/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+      await TodoModel.findByIdAndDelete(id);
+      let todos = await UserModel.findById({ _id: req.body.userID }).populate("todos");
+      todos.todos = todos.todos.filter((el) => {
+        return el._id.toString() !== id;
+      });
+      todos = await UserModel.findByIdAndUpdate({ _id: req.body.userID }, todos).populate("todos");
+      res.send({ msg: "Todo Deleted Sucessfully." })
+  } catch (error) {
+      res.send({ err: error.message })
+  }
+});
+
+// todosRouter.delete("/delete/:id", async (req, res) => {
+//   const { id } = req.params;
+//   const { userID } = req.body;
+  
+//   try {
+//     // Delete the todo item
+//     await TodoModel.findByIdAndDelete(id);
+    
+//     // Find the user and update their todos list
+//     const user = await UserModel.findById(userID).populate("todos");
+    
+//     // Filter out the deleted todo item
+//     user.todos = user.todos.filter(todo => todo._id.toString() !== id);
+    
+//     // Save the updated user object
+//     await user.save();
+    
+//     res.send({ msg: "Todo Deleted." });
+//   } catch (error) {
+//     res.status(500).send({ err: error.message });
+//   }
+// });
 
 
 module.exports = {todosRouter};

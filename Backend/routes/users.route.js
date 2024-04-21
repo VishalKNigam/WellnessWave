@@ -3,6 +3,8 @@ const { UserModel } = require("../models/users.model");
 const userRouter = express.Router();
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
+
+
 userRouter.get("/", async (req, res) => {
     const { page, limit } = req.query;
     try {
