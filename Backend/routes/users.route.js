@@ -2,6 +2,7 @@ const express = require("express");
 const { UserModel } = require("../models/users.model");
 const userRouter = express.Router();
 const jwt = require("jsonwebtoken");
+const { registrationMiddleware } = require("../middlewares/registration.middleware");
 require("dotenv").config();
 userRouter.get("/", async (req, res) => {
     const { page, limit } = req.query;
@@ -21,7 +22,7 @@ userRouter.get("/", async (req, res) => {
 });
 // User Registeration
 
-userRouter.post("/register", async (req, res) => {
+userRouter.post("/register",registrationMiddleware, async (req, res) => {
     try {
         const user = new UserModel(req.body);
         await user.save();
