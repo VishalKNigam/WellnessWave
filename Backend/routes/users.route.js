@@ -3,6 +3,8 @@ const { UserModel } = require("../models/users.model");
 const userRouter = express.Router();
 const jwt = require("jsonwebtoken");
 const { registrationMiddleware } = require("../middlewares/registration.middleware");
+const { loginMiddleware } = require("../middlewares/login.middleware");
+const { UserAuthorizationMiddleware } = require("../middlewares/UserAuthorization.middleware");
 require("dotenv").config();
 
 
@@ -33,7 +35,7 @@ userRouter.post("/register",registrationMiddleware, async (req, res) => {
         res.send({ "error": error.message })
     }
 });
-userRouter.post("/login", async (req, res) => {
+userRouter.post("/login",loginMiddleware, async (req, res) => {
     const { email } = req.body;
     const user = await UserModel.findOne({ email });
     try {
@@ -49,7 +51,7 @@ userRouter.post("/login", async (req, res) => {
 
     }
 });
-userRouter.patch("/update",async (req,res)=>{
+userRouter.patch("/update",UserAuthorizationMiddleware ,async (req,res)=>{
     const {userId,name} = req.body;
     try {
         await UserModel.findByIdAndUpdate(userId,req.body);
@@ -59,7 +61,7 @@ userRouter.patch("/update",async (req,res)=>{
     }
 });
 
-userRouter.delete("/delete/:id",async (req,res)=>{
+userRouter.delete("/delete/:id",UserAuthorizationMiddleware,async (req,res)=>{
     const {id} = req.params;
     let user = await UserModel.findById(id);
     try {
