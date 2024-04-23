@@ -50,28 +50,7 @@ todosRouter.delete("/delete/:id", async (req, res) => {
   }
 });
 
-// todosRouter.delete("/delete/:id", async (req, res) => {
-//   const { id } = req.params;
-//   const { userID } = req.body;
-  
-//   try {
-//     // Delete the todo item
-//     await TodoModel.findByIdAndDelete(id);
-    
-//     // Find the user and update their todos list
-//     const user = await UserModel.findById(userID).populate("todos");
-    
-//     // Filter out the deleted todo item
-//     user.todos = user.todos.filter(todo => todo._id.toString() !== id);
-    
-//     // Save the updated user object
-//     await user.save();
-    
-//     res.send({ msg: "Todo Deleted." });
-//   } catch (error) {
-//     res.status(500).send({ err: error.message });
-//   }
-// });
+
 
 
 module.exports = {todosRouter};
