@@ -7,7 +7,7 @@ const { loginMiddleware } = require("../middlewares/login.middleware");
 const { UserAuthorizationMiddleware } = require("../middlewares/UserAuthorization.middleware");
 require("dotenv").config();
 
-
+// All user
 userRouter.get("/", async (req, res) => {
     const { page, limit } = req.query;
     try {
@@ -24,8 +24,8 @@ userRouter.get("/", async (req, res) => {
     }
 
 });
-// User Registeration
 
+// User Registeration
 userRouter.post("/register",registrationMiddleware, async (req, res) => {
     try {
         const user = new UserModel(req.body);
@@ -35,6 +35,8 @@ userRouter.post("/register",registrationMiddleware, async (req, res) => {
         res.send({ "error": error.message })
     }
 });
+
+// User Login
 userRouter.post("/login",loginMiddleware, async (req, res) => {
     const { email } = req.body;
     const user = await UserModel.findOne({ email });
@@ -51,6 +53,8 @@ userRouter.post("/login",loginMiddleware, async (req, res) => {
 
     }
 });
+
+// User update
 userRouter.patch("/update",UserAuthorizationMiddleware ,async (req,res)=>{
     const {userId,name} = req.body;
     try {
@@ -61,6 +65,7 @@ userRouter.patch("/update",UserAuthorizationMiddleware ,async (req,res)=>{
     }
 });
 
+// User delete by id
 userRouter.delete("/delete/:id",UserAuthorizationMiddleware,async (req,res)=>{
     const {id} = req.params;
     let user = await UserModel.findById(id);

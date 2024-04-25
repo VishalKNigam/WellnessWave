@@ -41,6 +41,7 @@ cartRouter.patch("/update/:id", UserAuthorizationMiddleware, async (req, res) =>
         res.send({ err: error.message })
     }
 });
+
 // Cart item Delete Route
 cartRouter.delete("/delete/:id", UserAuthorizationMiddleware, async (req, res) => {
     const { id } = req.params;

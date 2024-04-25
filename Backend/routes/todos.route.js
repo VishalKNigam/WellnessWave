@@ -3,12 +3,11 @@ const { UserModel } = require("../models/users.model");
 const { TodoModel } = require("../models/todos.model");
 const todosRouter = express.Router();
 
-
+// All todos
 todosRouter.get("/", async(req,res) => {
   let todos = await UserModel.findById({_id: req.body.userID}).populate("todos");
   res.send({todos: todos.todos});
 });
-
 
 // user registration thing are working here
 todosRouter.post("/add", async(req,res) => {
