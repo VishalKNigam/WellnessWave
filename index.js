@@ -9,6 +9,7 @@ const { todosRouter } = require("./Backend/routes/todos.route");
 const { productRouter } = require("./Backend/routes/products.route");
 const { cartRouter } = require("./Backend/routes/cart.route");
 const { wishlistRouter } = require("./Backend/routes/wishlist.route");
+const { myorderRouter } = require("./Backend/routes/myorder.route");
 
 const port = Number(process.env.PORT) || 8080;
 
@@ -17,6 +18,7 @@ app.use("/todos", todosRouter);
 app.use("/products", productRouter);
 app.use("/cart", cartRouter);
 app.use("/wishlist", wishlistRouter);
+app.use("/myorder", myorderRouter);
 
 app.get("/", (req,res)=>{
     res.send("Home");
