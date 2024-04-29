@@ -13,4 +13,4 @@ const MyOrderSchema = mongoose.Schema({
 
 const MyOrderModel = mongoose.model("myorder", MyOrderSchema);
 
-module.exports = { MyOrderModel }
+module.exports = { MyOrderModel };
