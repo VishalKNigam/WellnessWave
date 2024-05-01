@@ -5,6 +5,10 @@
     font-family: poppins;
     color: FFFFFF;
 }
+:root {
+    --primary-color: #4db8ff; /* Light Blue */
+    --secondary-color: #8bc34a; /* Light Green */
+  }
 
 #footer-title {
     color: #000000;
@@ -16,7 +20,7 @@
 }
 
 .wish:hover {
-    color: rgb(8, 151, 47);
+    color: var(--secondary-color);
 }
 
 #discount {
@@ -92,8 +96,18 @@
     margin-left: 30px;
 }
 
-.logo img {
-    width: 100%;
+.logo a {
+    /* border: 1px solid red; */
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight:bolder;
+    font-size: 22px;
+    font-family: "EB Garamond", serif;
+    transition: transform 1s ease;
+}
+.logo:hover{
+    transform: scale(1.02);
+
 }
 
 /* Style the search bar */
@@ -118,6 +132,10 @@
     font-size: 17px;
     background-color: rgb(190, 243, 204);
 }
+#signup-div a{
+  /* border: 1px solid red; */
+  font-size: 34px;
+}
 
 /* Style the navigation buttons */
 .nav-buttons {
@@ -141,7 +159,8 @@
 .bottom-nav {
     display: flex;
     justify-content: center;
-    background-color: #498c4d;
+    background-color: var(--primary-color);
+    
     /* height: 60px; */
 }
 
@@ -430,7 +449,7 @@
 }
 
 footer {
-    background-color: #498c4d;
+    background-color: var(--primary-color);
     position: relative;
     width: 100%;
     min-height: 350px;
