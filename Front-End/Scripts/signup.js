@@ -54,8 +54,8 @@ function validationPassword() {
         passwordError.innerHTML = "Password Invalid!";
         return false;
     }
-    if (password.length < 8) {
-        passwordError.innerHTML = "8 character is required";
+    if (password.length < 5) {
+        passwordError.innerHTML = "5 character is required";
         return false;
     }
     passwordError.innerHTML = '<i class="fas fa-check-circle"></i>';
@@ -63,13 +63,11 @@ function validationPassword() {
 };
 
 // validation for form all inputs are working or data provided working fine or not
-// let flag = false;
 function validateSubmit() {
     if (!validationPassword() || !validationEmail() || !validationMobile() || !validationFirstName()) {
         submitError.innerHTML = "Please fill the data to submit."
         return false
     } else {
-        // flag = true;
         RegisterUser();
         return true;
     }
@@ -106,10 +104,17 @@ function RegisterUser() {
     })
         .then((res) => res.json())
         .then((data) => {
-            alert(`${data.msg}`);
-            if (data.err == false) return;
-            alert("Redirecting to Login Page");
-            redirectToLogin();
+            // alert(`${data.msg}`);
+            Swal.fire({
+                title: data.err ? 'Error!' : 'Success!',
+                text: data.msg,
+                icon: data.err ? 'error' : 'success',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+                if (!data.err) {
+                    redirectToLogin();
+                }
+            });
         })
 };
 
