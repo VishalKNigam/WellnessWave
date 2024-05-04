@@ -3,6 +3,7 @@ const app = express();
 require("dotenv").config();
 app.use(express.json());
 const cors = require("cors");
+app.use(cors());
 const { connection } = require("./Backend/config/db");
 const { userRouter } = require("./Backend/routes/users.route");
 const { todosRouter } = require("./Backend/routes/todos.route");
