@@ -81,6 +81,7 @@ function loginUser() {
                 icon: "success",
                 confirmButtonText: 'OK'
             }).then(() => {
+                sessionStorage.setItem("token",JSON.stringify(data));
                 if(data.role == "Explorer") {
                     location.href = "./index.html"
                 } else if(data.role == "Admin") {
