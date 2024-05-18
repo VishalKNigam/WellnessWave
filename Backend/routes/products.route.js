@@ -15,24 +15,6 @@ productRouter.post("/add", async (req, res) => {
     }
 });
 
-// Product Update Routes Admin
-productRouter.patch("/update/:id", async (req, res) => {
-    const { id } = req.params;
-    await ProductModel.findByIdAndUpdate({ _id: id }, req.body);
-    res.send({ msg: `Product: ${req.body.title} is updated.` })
-});
-
-// Product Delete Route for admin
-productRouter.delete("/delete/:id", async (req, res) => {
-    const { id } = req.params;
-    try {
-        let product = await ProductModel.findById(id);
-        await ProductModel.findByIdAndDelete(id);
-        res.send({ msg: `Product: ${product.title} is deleted.` })
-    } catch (error) {
-        res.send({ err: error.message })
-    }
-});
 // Product Get request handeler
 productRouter.get("/", async (req, res) => {
     const { category, brand, rating, price, quantity, sortrating, sortprice, page, limit } = req.query;
@@ -459,6 +441,27 @@ productRouter.get("/", async (req, res) => {
         }
     }
 });
+
+// Product Update Routes Admin
+productRouter.patch("/update/:id", async (req, res) => {
+    const { id } = req.params;
+    await ProductModel.findByIdAndUpdate({ _id: id }, req.body);
+    res.send({ msg: `Product: ${req.body.title} is updated.` })
+});
+
+// Product Delete Route for admin
+productRouter.delete("/delete/:id", async (req, res) => {
+    const { id } = req.params;
+    try {
+        let product = await ProductModel.findById(id);
+        await ProductModel.findByIdAndDelete(id);
+        res.send({ msg: `Product: ${product.title} is deleted.` })
+    } catch (error) {
+        res.send({ err: error.message })
+    }
+});
+
+
 
 
 module.exports = {productRouter}
