@@ -23,7 +23,7 @@ app.use("/wishlist", wishlistRouter);
 app.use("/myorder", myorderRouter);
 
 app.get("/", (req,res)=>{
-    res.send("Home");
+    res.send("Welcome to Backend Of WellnessWave!");
 });
 
 app.listen(port, async()=>{
