@@ -120,7 +120,7 @@ function RegisterUser() {
 
 // redirecting to dashboard
 function redirectToLogin() {
-    location.href = "../Pages/login.html"
+    location.href = "./login.html"
 };
 
 

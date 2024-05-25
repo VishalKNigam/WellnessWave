@@ -124,3 +124,66 @@
 </body>
 
 </html>
+<!-- login / logout logic -->
+<style id="logoutStyle">
+    /* sigup/login dropdow css come here after login and remove after logout */
+</style>
+<script>
+    var saveToken = JSON.parse(sessionStorage.getItem("token"));
+    let logoutStyle = document.getElementById("logoutStyle");
+    let signup_div = document.getElementById("signup-div");
+
+    console.log(saveToken, saveToken.length);
+    if (saveToken.logout) {
+        signup_div.innerHTML = null;
+        signup_div.innerHTML = `<a href="./signup.html" id="sign-in"><i class="fa fa-user"></i> Sign In / Register</a>`
+    } else {
+        signup_div.innerHTML = null;
+        signup_div.innerHTML = ` <div class="dropdown">
+       <a href="#" id="sign-in"><i class="fa fa-user"></i> ${saveToken.name}</a>
+       <div class="dropdown-content">
+         <a href="./myorder.html">My Orders</a>
+         <a onclick="logout()">Log out</a>
+       </div>
+     </div>`
+        logoutStyle.append(
+            `.dropdown {
+   display: inline-block;
+   position: relative;
+   background-color: white;
+ }
+ .dropdown-content {
+   display: none;
+   position: absolute;
+   width: 100%;
+   overflow: auto;
+   box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.4);
+ }
+ .dropdown:hover .dropdown-content {
+   display: block;
+ }
+ .dropdown-content a {
+   display: block;
+   color: #000000;
+   padding: 5px;
+   text-decoration: none;
+   background-color: rgb(205, 250, 214);
+ }
+ .dropdown-content a:hover {
+   color: #FFFFFF;
+   background-color: #00A4BD;
+ }`
+        )
+    }
+
+    function logout() {
+        // console.log("logout")
+        sessionStorage.setItem("token", JSON.stringify({ logout: true }));
+        alert("Redirecting To Home Page.")
+        window.location.href = "./index.html"
+    }
+</script>
+
+<!-- login / logout logic -->
+
+<script src="./Scripts/wishlist.js"></script>
