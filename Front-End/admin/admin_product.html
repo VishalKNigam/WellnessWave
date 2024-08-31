@@ -4,10 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WellnessWave-Product Page</title>
-    <link rel="icon" href="" type="image/icon type" />
+    <title>Wellnesswave -Product Page</title>
+    <link rel="icon" href="./titleLogo.jpg" type="image/icon type" />
     <meta charset="UTF-8" />
-    <meta property="og:title" content="WellnessWave.com" />
+    <meta property="og:title" content="Wellnesswave.com" />
+
     <script
       src="https://kit.fontawesome.com/c4254e24a8.js"
       crossorigin="anonymous"
@@ -34,10 +35,10 @@
     <nav class="navbar">
       <div class="top-nav">
         <div class="logo">
-          <a href="./index.html">WellnessWave</a>
+          <a href="./admin.html">WellnessWave</a>
         </div>
         <div class="search-bar">
-          <div class="title"></div>
+          <div class="title">SEARCH</div>
           <input
             type="search"
             name=""
@@ -50,25 +51,21 @@
         </div>
         <div class="nav-buttons">
           <div id="signup-div">
-            <a href="./signup.html" id="sign-in"><i class="fa fa-user"></i></a>
+            <a href="../signup.html" id="sign-in"
+              ><i class="fa fa-user"></i> Sign In / Register</a
+            >
           </div>
-          <a class="wish" href="./wishlist.html">
-            <h4 id="wishlistCounter">0</h4>
-            <i class="fa-regular fa-heart"></i> Wishlist
-          </a>
-          <a class="wish" href="./Cart.html">
-            <h4 id="cartCounter">0</h4>
-            <i class="fa-solid fa-cart-shopping"></i>Cart
+          <a class="wish" href="#">
+            <i class="fa-solid fa-bell fa-shake" style="color: #020a17"> 0</i
+            >Notifications
           </a>
         </div>
       </div>
       <div class="bottom-nav">
-        <a href="#">Brands</a>
-        <a href="./product.html">All Products</a>
-        <a href="#">Blogs</a>
-        <a href="#">gift Card</a>
-        <a href="#">Customer Support</a>
-        <a href="#">Store Location</a>
+        <a href="./signup.html">Admin Registration</a>
+        <a href="./admin_product.html">All Products</a>
+        <a href="./users.html">All Coustomers</a>
+        <a href="../index.html">Visit Home Page</a>
       </div>
     </nav>
 
@@ -191,10 +188,7 @@
           </div>
           <div>
             <legend>Filter By Product Rating</legend>
-            <!-- <div> -->
-            <!-- <input type="checkbox" id="abovefour" name="product" value="4" /> -->
-            <!-- <label for="4">.</label> -->
-            <!-- </div> -->
+
             <select name="" id="rating">
               <option value="">Select Rating</option>
               <option value="4">Rating Above 4</option>
@@ -205,10 +199,7 @@
           </div>
           <div>
             <legend>Filter By Product Price</legend>
-            <!-- <div>
-                        <input type="checkbox" id="abovefour" name="product" value="4" />
-                        <label for="4">.</label> -->
-            <!-- </div> -->
+
             <select name="" id="price">
               <option value="">Select Price</option>
               <option value="2000">Price Below ₹ 2000</option>
@@ -218,15 +209,13 @@
             </select>
           </div>
 
+          <div></div>
           <div>
-            <!-- <legend>Sort The Product</legend> -->
-            <!-- <div> -->
-            <!-- <input type="checkbox" id="abovefour" name="product" value="4" /> -->
-            <!-- <label for="4">.</label> -->
-            <!-- </div> -->
-          </div>
-          <div>
-            <div></div>
+            <!-- <legend>Filter By Product Price</legend> -->
+            <div>
+              <!-- <input type="checkbox" id="abovefour" name="product" value="4" /> -->
+              <!-- <label for="4">.</label> -->
+            </div>
           </div>
           <button id="applyfilter">Apply</button>
           <button id="removefilter">Remove Filter</button>
@@ -236,10 +225,11 @@
       <div id="container">
         <!-- product appende here -->
       </div>
+      <div id="pagination">
+        <!-- pagination here -->
+      </div>
     </div>
-    <div id="pagination">
-      <!-- pagination here -->
-    </div>
+
     <div id="f-main">
       <footer>
         <div class="f-cont">
@@ -247,9 +237,9 @@
             <div class="col" id="about">
               <h3>About Us</h3>
               <p>
-                WellnessWave was established in May 2024. This company started
+                Wellnesswave was established in May 2023. This company started
                 with a few employees but transitioned into a full-fledged online
-                platform within just a few months. By June 2024, WellnessWave
+                platform within just a few months. By June 2023, Wellnesswave
                 introduced the certified, well-known Indian and international
                 brands to its platform, and that is increasing in number each
                 passing month.
@@ -258,9 +248,7 @@
                 <a href="#"><i class="fa fa-facebook"></i></a>
                 <a href="#"><i class="fa fa-instagram"></i></a>
                 <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="https://github.com/VishalKNigam/WellnessWave"
-                  ><i class="fa fa-github"></i
-                ></a>
+                <a href="#"><i class="fa fa-github"></i></a>
               </div>
             </div>
             <div class="col" id="company">
@@ -317,14 +305,14 @@
   if (saveToken.logout) {
     // console.log("hii");
     signup_div.innerHTML = null
-    signup_div.innerHTML = `<a href="./signup.html" id="sign-in"><i class="fa fa-user"></i></a>`
+    signup_div.innerHTML = `<a href="./signup.html" id="sign-in"><i class="fa fa-user"></i> Sign In / Register</a>`
   } else {
     // console.log("234");
     signup_div.innerHTML = null
     signup_div.innerHTML = ` <div class="dropdown">
        <a href="#" id="sign-in"><i class="fa fa-user"></i> ${saveToken.name}</a>
        <div class="dropdown-content">
-        <a href="./myorder.html">My Orders</a>
+        <a href="../myorder.html">My Orders</a>
          <a onclick="logout()">Log out</a>
        </div>
      </div>`
@@ -359,8 +347,9 @@
   }
 
   function logout() {
+    // console.log("logout")
     sessionStorage.setItem("token", JSON.stringify({ logout: true }))
     alert("Redirecting To Home Page.")
-    window.location.href = "./index.html"
+    window.location.href = "../index.html"
   }
 </script>
