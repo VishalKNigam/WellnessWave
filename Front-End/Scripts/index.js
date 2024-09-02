@@ -32,7 +32,7 @@ fetchCartLength(), fetchWishlistLength();
 
 function fetchCartLength() {
   // console.log("HIII");
-  fetch(`https://moral-riddle-2098-project-server.onrender.com/cart/`, {
+  fetch(`https://wellnesswave-rs9y.onrender.com/cart/`, {
     method: "GET",
     headers: {
       "authorization": `Bearer ${saveToken.token}`
@@ -50,7 +50,7 @@ function fetchCartLength() {
 
 function fetchWishlistLength() {
   // console.log("HIII");
-  fetch(`https://moral-riddle-2098-project-server.onrender.com/wishlist/`, {
+  fetch(`https://wellnesswave-rs9y.onrender.com/wishlist/`, {
     method: "GET",
     headers: {
       "authorization": `Bearer ${saveToken.token}`

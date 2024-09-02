@@ -389,15 +389,6 @@ function getCard(dataId, title, brand, category, rating, price, avatar, quantity
     nameCard.classList = "card_title";
     nameCard.innerText = `${title}`;
 
-    // let brandCard = document.createElement("h4");
-    // brandCard.classList = "card_item"
-    // brandCard.classList = "card_description";
-    // brandCard.innerHTML = `Brand:${brand} Catgory: ${category}`;
-
-    // let categoryCard = document.createElement("div");
-    // categoryCard.classList = "card_item"
-    // categoryCard.classList = "card_description";
-    // categoryCard.innerText = category;
 
     let ratingCard = document.createElement("h4");
     ratingCard.classList = "card_item"
@@ -538,15 +529,7 @@ function getCard(dataId, title, brand, category, rating, price, avatar, quantity
             "img": avatar,
             "quantity": 1
         };
-        // console.log(wishlistObject);
-        // console.log(saveToken.token);
-        // fetch(`https://wellnesswave-rs9y.onrender.com/products/updateAfterAddCart/${e.target.id}`,{
-        //     method:"PATCH",
-        //     headers:{
-        //         'Content-type':"application/json"
-        //     },
-        //     body:JSON.stringify({quantity:quantity-1})
-        // }).then((res)=>res.json()).then((res)=>console.log(res)).catch((err)=>console.log(err))
+        
         fetch(`https://wellnesswave-rs9y.onrender.com/wishlist/add/`, {
             method: "POST",
             headers: {
@@ -562,11 +545,6 @@ function getCard(dataId, title, brand, category, rating, price, avatar, quantity
     })
     buttonDiv.append(cartButton, wishlistButton)
 
-    //     let quantityCard = document.createElement("h5");
-    //     quantityCard.classList = "card_item"
-    //     quantityCard.classList = "card_quantity";
-    //     quantityCard.innerText = `Out Of Stock`;
-    //     // quantityCard.innerHTML = `2`
 
     cardBody.append(ratingCard, nameCard, priceCard, buttonDiv)
 

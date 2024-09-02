@@ -85,7 +85,7 @@ function loginUser() {
                 if(data.role == "Explorer") {
                     location.href = "./index.html"
                 } else if(data.role == "Admin") {
-                    location.href = "#"
+                    location.href = "./admin/admin.html"
                 } else {
                     location.href = "./signup.html";
                 }
